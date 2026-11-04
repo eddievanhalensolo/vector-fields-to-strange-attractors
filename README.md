@@ -1,6 +1,6 @@
-# Dynamische Systeme & Chaos
+# Sensitive Dependence
 
-[![CI](https://github.com/eddievanhalensolo/dynamical-systems-chaos/actions/workflows/ci.yml/badge.svg)](https://github.com/eddievanhalensolo/dynamical-systems-chaos/actions/workflows/ci.yml)
+[![CI](https://github.com/eddievanhalensolo/sensitive-dependence/actions/workflows/ci.yml/badge.svg)](https://github.com/eddievanhalensolo/sensitive-dependence/actions/workflows/ci.yml)
 [![Lizenz: MIT](https://img.shields.io/badge/Lizenz-MIT-blue.svg)](LICENSE)
 
 Eine Lernreise in sieben Jupyter-Notebooks: von Differentialgleichungen als Vektorfeldern bis zu seltsamen Attraktoren. Mit lauffähigem Code, Abbildungen und Übungen in jedem Modul.
@@ -44,8 +44,8 @@ Die Notebooks enthalten ihre Ausgaben und lassen sich direkt auf GitHub lesen.
 ## Setup
 
 ```bash
-git clone https://github.com/eddievanhalensolo/dynamical-systems-chaos.git
-cd dynamical-systems-chaos
+git clone https://github.com/eddievanhalensolo/sensitive-dependence.git
+cd sensitive-dependence
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -57,7 +57,7 @@ Entwickelt und getestet mit Python 3.14. Die CI prüft außerdem Python 3.10.
 ## Struktur
 
 ```
-dynamical-systems-chaos/
+sensitive-dependence/
 ├── notebooks/         # Die sieben Module
 ├── utils/             # Optionale Bibliothek (siehe unten)
 │   ├── plotting.py        # Visualisierungsfunktionen
