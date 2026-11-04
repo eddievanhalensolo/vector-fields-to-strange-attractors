@@ -1,0 +1,17 @@
+# Virtuelle Umgebungen
+venv/
+.venv/
+path/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Lokale Daten und Werkzeuge
+data/
+.claude/
+.DS_Store

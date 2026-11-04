@@ -5,10 +5,15 @@ Crafted for deep understanding, not just pretty pictures.
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.colors import Normalize
-from matplotlib import cm
 from typing import Callable, Tuple, Optional, List
 from scipy.integrate import odeint
+
+__all__ = [
+    'set_style', 'plot_1d_phase_line', 'plot_1d_potential', 'plot_1d_time_series',
+    'plot_vector_field', 'plot_streamlines', 'plot_nullclines', 'plot_trajectory',
+    'plot_phase_portrait', 'plot_3d_trajectory', 'plot_lorenz_attractor',
+    'plot_bifurcation_diagram_1d', 'plot_logistic_bifurcation',
+]
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -73,10 +78,13 @@ def plot_1d_phase_line(f: Callable, x_range: Tuple[float, float],
             df = (f(x_star + h) - f(x_star - h)) / (2 * h)
 
             if df < 0:
-                ax.plot(x_star, 0, 'ko', markersize=12, label='Stabil' if idx == sign_changes[0] else '')
+                ax.plot(x_star, 0, 'ko', markersize=12)
             else:
                 ax.plot(x_star, 0, 'ko', markersize=12, fillstyle='none',
-                       markeredgewidth=2, label='Instabil' if idx == sign_changes[0] else '')
+                       markeredgewidth=2)
+
+        ax.plot([], [], 'ko', markersize=8, label='Stabil')
+        ax.plot([], [], 'ko', markersize=8, fillstyle='none', markeredgewidth=2, label='Instabil')
 
     # Show flow direction on x-axis
     if show_flow:
@@ -397,10 +405,6 @@ def plot_lorenz_attractor(sigma: float = 10, rho: float = 28, beta: float = 8/3,
 
     fig = plt.figure(figsize=(14, 10))
     ax = fig.add_subplot(111, projection='3d')
-
-    # Color by time for visual effect
-    points = sol.reshape(-1, 1, 3)
-    segments = np.concatenate([points[:-1], points[1:]], axis=1)
 
     ax.plot(sol[:, 0], sol[:, 1], sol[:, 2], linewidth=0.5, alpha=0.8)
 
