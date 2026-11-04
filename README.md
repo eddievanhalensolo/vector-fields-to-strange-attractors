@@ -1,98 +1,71 @@
-# Towards a Phenomenology of Deterministic Aperiodicity
+# From Vector Fields to Strange Attractors
 
-[![CI](https://github.com/eddievanhalensolo/phenomenology-of-deterministic-aperiodicity/actions/workflows/ci.yml/badge.svg)](https://github.com/eddievanhalensolo/phenomenology-of-deterministic-aperiodicity/actions/workflows/ci.yml)
+[![CI](https://github.com/eddievanhalensolo/vector-fields-to-strange-attractors/actions/workflows/ci.yml/badge.svg)](https://github.com/eddievanhalensolo/vector-fields-to-strange-attractors/actions/workflows/ci.yml)
 [![Lizenz: MIT](https://img.shields.io/badge/Lizenz-MIT-blue.svg)](LICENSE)
 
-**Dynamische Systeme & Chaos:** Eine Lernreise in sieben Jupyter-Notebooks: von Differentialgleichungen als Vektorfeldern bis zu seltsamen Attraktoren. Mit lauffähigem Code, Abbildungen und Übungen in jedem Modul.
-
-*A seven-notebook course on nonlinear dynamics, from ODEs as vector fields to strange attractors. The material is written in German.*
+Ein Kurs über dynamische Systeme und Chaos in sieben Jupyter-Notebooks. Er beginnt mit Differentialgleichungen als Vektorfeldern und endet bei seltsamen Attraktoren. Jedes Modul enthält Erklärungen, ausführbaren Code, Abbildungen und Übungen.
 
 ![Der Lorenz-Attraktor](assets/lorenz.png)
 
-## Die Module
+## Module
 
-Die Notebooks enthalten ihre Ausgaben und lassen sich direkt auf GitHub lesen.
+Die Notebooks enthalten ihre Ergebnisse und lassen sich direkt auf GitHub lesen. Am besten arbeitest du sie der Reihe nach durch.
 
 | # | Modul | Inhalt |
 |---|-------|--------|
 | 1 | [DGL als Vektorfeld](notebooks/01_dgl_als_vektorfeld.ipynb) | Phasenraum, Eindeutigkeit, Fluss |
 | 2 | [Eindimensionale Systeme](notebooks/02_eindimensionale_systeme.ipynb) | Fixpunkte, Stabilität, Potentiale |
 | 3 | [Zweidimensionale Systeme](notebooks/03_zweidimensionale_systeme.ipynb) | Phasenportraits, Klassifikation, Nullklinen |
-| 4 | [Nichtlineare Systeme](notebooks/04_nichtlineare_systeme.ipynb) | Linearisierung, Grenzzyklen, Poincaré-Bendixson |
-| 5 | [Bifurkationen](notebooks/05_bifurkationen.ipynb) | Qualitative Übergänge, Hopf, Periodenverdopplung |
-| 6 | [Chaos](notebooks/06_chaos.ipynb) | Lorenz, Lyapunov-Exponenten, Schmetterlingseffekt |
+| 4 | [Nichtlineare Systeme](notebooks/04_nichtlineare_systeme.ipynb) | Linearisierung, Grenzzyklen, Satz von Poincaré-Bendixson |
+| 5 | [Bifurkationen](notebooks/05_bifurkationen.ipynb) | Sattelknoten, Heugabel, Hopf, Periodenverdopplung |
+| 6 | [Chaos](notebooks/06_chaos.ipynb) | Lorenz-System, Lyapunov-Exponenten, logistische Abbildung |
 | 7 | [Seltsame Attraktoren](notebooks/07_seltsame_attraktoren.ipynb) | Fraktale Dimension, Hénon, Rössler |
 
-## Die Lernreise
+In einer oder zwei Dimensionen gibt es bei kontinuierlichen Systemen kein Chaos. Dafür braucht es mindestens drei Dimensionen oder eine diskrete Abbildung. Der Kurs baut deshalb von 1D über 2D bis zu den chaotischen Systemen in den letzten beiden Modulen auf.
 
-```
-[1] DGL als Vektorfeld
-         ↓
-[2] 1D-Systeme (kein Chaos möglich!)
-         ↓
-[3] 2D-Systeme (immer noch kein Chaos)
-         ↓
-[4] Nichtlinearität & Grenzzyklen
-         ↓
-[5] Bifurkationen
-         ↓
-[6] Chaos (≥3D oder diskret)
-         ↓
-[7] Seltsame Attraktoren
-```
-
-## Setup
+## Installation
 
 ```bash
-git clone https://github.com/eddievanhalensolo/phenomenology-of-deterministic-aperiodicity.git
-cd phenomenology-of-deterministic-aperiodicity
+git clone https://github.com/eddievanhalensolo/vector-fields-to-strange-attractors.git
+cd vector-fields-to-strange-attractors
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 jupyter notebook notebooks/
 ```
 
-Entwickelt und getestet mit Python 3.14. Die CI prüft außerdem Python 3.10.
+Getestet mit Python 3.10 und 3.14.
 
-## Struktur
+## Aufbau des Repositorys
 
 ```
-phenomenology-of-deterministic-aperiodicity/
+vector-fields-to-strange-attractors/
 ├── notebooks/         # Die sieben Module
-├── utils/             # Optionale Bibliothek (siehe unten)
-│   ├── plotting.py        # Visualisierungsfunktionen
+├── utils/             # Optionale Hilfsfunktionen
+│   ├── plotting.py        # Abbildungen
 │   └── integration.py     # Numerische Werkzeuge
 ├── tests/             # Tests für utils/
 └── requirements.txt
 ```
 
-Die Notebooks sind eigenständig und bringen ihren Code selbst mit. `utils/` ist eine optionale Sammlung der gleichen Werkzeuge zum Weiterarbeiten, etwa für die Übungen. Vom Hauptverzeichnis aus:
+Die Notebooks enthalten ihren gesamten Code selbst und brauchen `utils/` nicht. Die Hilfsfunktionen kannst du zum Beispiel für die Übungen verwenden. Vom Hauptverzeichnis aus:
 
 ```python
 from utils import plot_phase_portrait, lyapunov_exponents_flow
 ```
 
-Die Tests prüfen die numerischen Werkzeuge gegen analytisch bekannte Ergebnisse:
+Die Tests vergleichen die numerischen Funktionen mit bekannten Ergebnissen:
 
 ```bash
 pip install pytest
 python -m pytest tests
 ```
 
-## Kernkonzepte
-
-- **DGL = Vektorfeld**: Jede DGL definiert einen Fluss im Phasenraum
-- **Phasenraum-Denken**: Qualitative Analyse ohne explizite Lösungen
-- **Linearisierung**: Lokal verhält sich alles wie linear (Hartman-Grobman)
-- **Bifurkationen**: Qualitative Übergänge bei Parameteränderung
-- **Chaos**: Determinismus ohne Vorhersagbarkeit (λ > 0)
-- **Fraktale Dimension**: Die Geometrie seltsamer Attraktoren
-
 ## Literatur
 
-- **Strogatz**: "Nonlinear Dynamics and Chaos" (das Standardwerk)
+- **Strogatz**: "Nonlinear Dynamics and Chaos" (das Standardlehrbuch)
 - **Gleick**: "Chaos: Making a New Science" (populärwissenschaftlich)
-- **Lorenz**: "The Essence of Chaos" (vom Entdecker selbst)
+- **Lorenz**: "The Essence of Chaos" (vom Entdecker des Lorenz-Systems)
 - **Grassberger & Procaccia**: "Characterization of Strange Attractors" (Phys. Rev. Lett. 50, 1983; zur Korrelationsdimension in Modul 7)
 
 ## Lizenz
